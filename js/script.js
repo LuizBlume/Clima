@@ -1,8 +1,8 @@
 // Elementos e variáveis
-let apiKey = "7257676f2a0c746bf1038a759e38ac61";
-let apiCountryUrl = "https://countryflagsapi.com/png/";
-let cityInput = document.querySelector("#city-input");
-let searchBtn = document.querySelector("#search");
+const apiKey = "7257676f2a0c746bf1038a759e38ac61";
+const apiCountryUrl = "https://countryflagsapi.com/png/";
+const cityInput = document.querySelector("#city-input");
+const searchBtn = document.querySelector("#search");
 const cityElement = document.querySelector("#city");
 const tempElement = document.querySelector("#temperature span");
 const descElement = document.querySelector("#description");
@@ -14,6 +14,7 @@ const errorMessageContainer = document.querySelector("#error-message");
 const loader = document.querySelector("#loader");
 const suggestionContainer = document.querySelector("#suggestions");
 const suggestionButtons = document.querySelectorAll("#suggestions button");
+
 // Loader
 const toggleLoader = () => {
     loader.classList.toggle("hide");
@@ -48,12 +49,12 @@ const showErrorMessage = () => {
 // Eventos
 searchBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    const city = cityInput.value;
+    const city = cityInput.value.trim();
     showWeatherData(city);
 })
 cityInput.addEventListener("keyup", (e) => {
     if (e.code === "Enter") {
         const city = e.target.value;
-        showWeatherData(city);
+        showWeatherData(city).trim();
     }
 })
